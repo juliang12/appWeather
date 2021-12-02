@@ -1,19 +1,17 @@
 import { useContext } from "react";
-import { WeatherContextState } from "../WeatherContext/ContextWeather";
-import "./Tiempo.css"
+import { WeatherContextState } from "../../weatherContext/ContextWeather";
+import "../Weather/Weather.css"
 
-export const Tiempo = ({ hora}) => {
-    const {search, weather, city, loading, hourly, handleSearch} = useContext(WeatherContextState);
+export const Weather = () => {
+    const { city } = useContext(WeatherContextState);
     const {name, main} = city;
 
     return (
         <div className="clima">
             <div className="location-box">
             <div className="location">{name}</div>
-            <div className="date">{hora}</div>
             </div>
             <div className="weather-box">
-           
             <div className="imagen">
                  <img className="icono" src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@4x.png`} alt="" />
                  </div>     

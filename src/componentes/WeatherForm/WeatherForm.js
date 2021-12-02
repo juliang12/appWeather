@@ -1,15 +1,13 @@
 import { useContext, useState } from "react"
-import { WeatherContextState } from "../WeatherContext/ContextWeather"
-import { Dias } from "./Dias"
-import Forecast from "./Forecast"
-import "./WeatherForm.css"
+import { WeatherContextState } from "../../weatherContext/ContextWeather"
+import "../WeatherForm/WeatherForm.css"
 
 const initialForm = {
 ciudad:"",
 }
 
 const WeatherForm = () => {
-    const {search, weather, city, loading, hourly, handleSearch} = useContext(WeatherContextState);
+    const {handleSearch} = useContext(WeatherContextState);
     const [form, setForm] = useState(initialForm);
 
     const handleChange = (e)=>{

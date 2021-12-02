@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { helpHttp } from "../helpers/helpHttp";
 
@@ -8,14 +8,15 @@ const WeatherContextState = createContext();
 
 const WeatherContext = ({children}) =>{
 
-    const [search, setSearch] = useState(null);
+    const [search, setSearch] = useState("");
     const [weather, setWeather] = useState("");
     const [hourly, setHourly] = useState(null);
     const [city, setCity] = useState({});
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-       if(search === null)return;
+       if(search === "")return;
+       
 
       
 
@@ -45,7 +46,7 @@ const WeatherContext = ({children}) =>{
     }, [search])
 
     const handleSearch = (data)=>{
-        //console.log(data)
+        console.log(data, "datos")
         setSearch(data);
     };
 

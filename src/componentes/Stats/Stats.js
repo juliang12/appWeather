@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import "./Stats.css"
+import "../Stats/Stats.css"
 
 import {
 	LineChart,
@@ -11,10 +11,11 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from 'recharts';
-import { WeatherContextState } from '../WeatherContext/ContextWeather';
+import { WeatherContextState } from '../../weatherContext/ContextWeather';
 
-const Stats = ({data}) => {
-  const {search, weather, city, loading, hourly, handleSearch} = useContext(WeatherContextState);
+
+const Stats = () => {
+  const {weather} = useContext(WeatherContextState);
 
   const {list} = weather;
 

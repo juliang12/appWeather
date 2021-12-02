@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import "../componentes/Dias.css"
-import { WeatherContextState } from "../WeatherContext/ContextWeather";
+import "../Days/Days.css"
+import { WeatherContextState } from "../../weatherContext/ContextWeather";
 
-export const Dias = () => {
+export const Days = () => {
 
-    const {search, weather, city, loading, hourly, handleSearch} = useContext(WeatherContextState);
+    const {weather} = useContext(WeatherContextState);
 
 
     const filtrado = weather.list.slice(0, 6)
