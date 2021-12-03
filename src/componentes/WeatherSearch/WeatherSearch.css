@@ -1,17 +1,17 @@
 .day{
     width: 100%;
-height: 100%;
-background-image: url("../../assets/dia.jpg");
-background-size: cover;
-background-position: bottom;
-transition: 0.4 ease-out;
-color: azure;
+    height: 1250px;
+    background-image: url("../../assets/dia.jpg");
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease-out;
+    color: azure;
     text-align: center;
   }
   
   .nigth{
     width: 100%;
-    height: 100%;
+    height: 1250px;
     background-image: url("../../assets/noche.jpg");
     background-size: cover;
     background-position: bottom;
@@ -33,6 +33,27 @@ color: azure;
 
 
   @media screen and (max-width: 860px){
+      .day{
+    width: 100%;
+    height: 1000px;
+    background-image: url("../../assets/dia.jpg");
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease-out;
+    color: azure;
+    text-align: center;
+  }
+  
+  .nigth{
+    width: 100%;
+    height: 1000px;
+    background-image: url("../../assets/noche.jpg");
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease-out;
+    color: azure;
+        text-align: center;
+  }
     .title{
       position: relative;
       font-size:7vh;

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { createContext } from "react";
 import { helpHttp } from "../helpers/helpHttp";
+import { initialState, reducer, TYPES } from "../reducer/reducer";
 
 
 
@@ -8,17 +9,13 @@ const WeatherContextState = createContext();
 
 const WeatherContext = ({children}) =>{
 
-    const [search, setSearch] = useState("");
-    const [weather, setWeather] = useState("");
-    const [hourly, setHourly] = useState(null);
-    const [city, setCity] = useState({});
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const {search, weather, city, hourly} = state;
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
        if(search === "")return;
        
-
-      
 
        const fetchData = async ()=>{
         const {ciudad} = search;
@@ -36,9 +33,12 @@ const WeatherContext = ({children}) =>{
         ]);
         console.log(apiRes, daysRes, hourlyRes);
 
-        setWeather(daysRes);
-        setCity(apiRes)
-        setHourly(hourlyRes)
+        dispatch({type: TYPES.WEATHER_DATA, payload:daysRes})
+        //setWeather(daysRes);
+        dispatch({type: TYPES.CITY_DATA, payload: apiRes})
+        //setCity(apiRes)
+        dispatch({type: TYPES.HOURLY_DATA, payload: apiHourly})
+        //setHourly(hourlyRes)
 
         setLoading(false);
     }
@@ -47,7 +47,7 @@ const WeatherContext = ({children}) =>{
 
     const handleSearch = (data)=>{
         console.log(data, "datos")
-        setSearch(data);
+        dispatch({type: TYPES.SEARCH_DATA, payload:data});
     };
 
     const data = {search, weather, city, loading, hourly, handleSearch};
