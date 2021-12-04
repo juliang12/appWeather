@@ -1,9 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import { createContext } from "react";
-import { helpHttp } from "../helpers/helpHttp";
 import { initialState, reducer, TYPES } from "../reducer/reducer";
-
-
 
 const WeatherContextState = createContext();
 
@@ -23,22 +20,31 @@ const WeatherContext = ({children}) =>{
         let daysUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${ciudad}&units=metric&appid=${APIkey}&lang=sp`;
         let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&appid=${APIkey}&lang=sp`;
         let apiHourly = `https://api.openweathermap.org/data/2.5/find?q=${ciudad}&appid=${APIkey}` 
-       console.log(daysUrl, apiUrl)
+
         setLoading(true);
 
+            try {
+        let daysFetch = await fetch(daysUrl),
+        weatherFetch = await fetch(apiUrl),
+        hourlyFetch = await fetch(apiHourly)
         const [daysRes, apiRes, hourlyRes] = await Promise.all([
-            helpHttp().get(daysUrl),
-            helpHttp().get(apiUrl),
-            helpHttp().get(apiHourly),
-        ]);
-        console.log(apiRes, daysRes, hourlyRes);
+            daysFetch, 
+            weatherFetch,
+            hourlyFetch
+        ]),
 
-        dispatch({type: TYPES.WEATHER_DATA, payload:daysRes})
-        //setWeather(daysRes);
-        dispatch({type: TYPES.CITY_DATA, payload: apiRes})
-        //setCity(apiRes)
-        dispatch({type: TYPES.HOURLY_DATA, payload: apiHourly})
-        //setHourly(hourlyRes)
+        daysData = await daysRes.json(),
+        apiData = await apiRes.json(), 
+        hourlyData = await hourlyRes.json(); 
+        
+
+        dispatch({type: TYPES.WEATHER_DATA, payload:daysData})
+        dispatch({type: TYPES.CITY_DATA, payload: apiData})
+        dispatch({type: TYPES.HOURLY_DATA, payload: hourlyData})
+
+            } catch (error) {
+                console.log(error)
+            }
 
         setLoading(false);
     }
@@ -46,7 +52,7 @@ const WeatherContext = ({children}) =>{
     }, [search])
 
     const handleSearch = (data)=>{
-        console.log(data, "datos")
+        //console.log(data, "datos")
         dispatch({type: TYPES.SEARCH_DATA, payload:data});
     };
 

@@ -14,7 +14,7 @@ const {search, weather, city, loading} = useContext(WeatherContextState);
 
 
       const isDay = new Date(dt * 1000).getHours();
-console.log(isDay)
+console.log(isDay, "hora")
 
     return (
         <div className={isDay < 6 || isDay < 18 ? "day" : "nigth" }>
@@ -25,7 +25,7 @@ console.log(isDay)
             <Forecast />}  
 
             {search && weather &&
-            <Stats isDay={isDay} />}
+            <Stats />}
         </div>
     )
 }

@@ -3,7 +3,6 @@ const TYPES = {
     WEATHER_DATA : "WEATHER_DATA",
     HOURLY_DATA : "HOURLY_DATA",
     CITY_DATA : "CITY_DATA",
-    LOADING : "LOADING",
 }
 
 

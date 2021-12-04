@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { WeatherContextState } from "../../weatherContext/ContextWeather"
 import "../WeatherForm/WeatherForm.css"
+import Swal from 'sweetalert2'
 
 const initialForm = {
 ciudad:"",
@@ -21,8 +22,11 @@ const WeatherForm = () => {
         e.preventDefault();
 
         if(!form.ciudad){
-            alert("Datos incompletos")
-            return;
+            return Swal.fire({
+                title: 'Error!',
+                text: 'Escriba algo por favor',
+                icon: 'error',
+              })
         }
 
         handleSearch(form);

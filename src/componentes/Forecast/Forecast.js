@@ -4,7 +4,7 @@ import "../Forecast/Forecast.css"
 import { useContext } from "react";
 import { WeatherContextState } from "../../weatherContext/ContextWeather";
 
-const Forecast = ({hora}) => {
+const Forecast = () => {
     const { weather, city } = useContext(WeatherContextState);
     if (!weather || !city) return null;
     return (
