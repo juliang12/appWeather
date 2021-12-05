@@ -28,7 +28,7 @@ const WeatherForm = () => {
                 icon: 'error',
               })
         }
-
+        //console.log(form, "info form")
         handleSearch(form);
         setForm(initialForm);
     };

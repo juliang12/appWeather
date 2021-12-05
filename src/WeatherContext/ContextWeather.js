@@ -24,9 +24,9 @@ const WeatherContext = ({children}) =>{
         setLoading(true);
 
             try {
-        let daysFetch = await fetch(daysUrl),
-        weatherFetch = await fetch(apiUrl),
-        hourlyFetch = await fetch(apiHourly)
+        let daysFetch = fetch(daysUrl),
+        weatherFetch = fetch(apiUrl),
+        hourlyFetch = fetch(apiHourly)
         const [daysRes, apiRes, hourlyRes] = await Promise.all([
             daysFetch, 
             weatherFetch,
@@ -43,10 +43,13 @@ const WeatherContext = ({children}) =>{
         dispatch({type: TYPES.HOURLY_DATA, payload: hourlyData})
 
             } catch (error) {
-                console.log(error)
+              console.log(error)
+            }
+            finally{
+               setLoading(false); 
             }
 
-        setLoading(false);
+        
     }
        fetchData();
     }, [search])

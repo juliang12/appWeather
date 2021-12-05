@@ -4,30 +4,30 @@ import Forecast from "../Forecast/Forecast";
 import Loader from "../Loader/Loader";
 import Stats from "../Stats/Stats";
 import WeatherForm from "../WeatherForm/WeatherForm";
-import "../WeatherSearch/WeatherSearch.css"
+import "./WeatherApp.css"
 
 
-const WeatherSearch = () => {
+const WeatherApp = () => {
 const {search, weather, city, loading} = useContext(WeatherContextState);
-
     const {dt} = city;
 
 
       const isDay = new Date(dt * 1000).getHours();
-console.log(isDay, "hora")
+    //console.log(isDay, "hora")
 
     return (
         <div className={isDay < 6 || isDay < 18 ? "day" : "nigth" }>
+            
             {loading && <Loader/>}
             <WeatherForm />
-            
+        
             {search && !loading && 
             <Forecast />}  
-
+              
             {search && weather &&
             <Stats />}
         </div>
     )
 }
 
-export default WeatherSearch
+export default WeatherApp

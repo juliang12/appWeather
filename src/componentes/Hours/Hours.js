@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import "../Days/Days.css"
+import "../Hours/Hours.css"
 import { WeatherContextState } from "../../weatherContext/ContextWeather";
 
-export const Days = () => {
+export const Hours = () => {
 
     const {weather} = useContext(WeatherContextState);
 

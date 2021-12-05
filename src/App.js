@@ -1,12 +1,12 @@
 import './App.css';
-import WeatherSearch from './componentes/WeatherSearch/WeatherSearch';
+import WeatherApp from './componentes/WeatherApp/WeatherApp';
 import { WeatherContext } from './weatherContext/ContextWeather';
 
 function App() {
   return (
     
       <WeatherContext>
-      <WeatherSearch/>
+      <WeatherApp/>
       </WeatherContext>
 
   );

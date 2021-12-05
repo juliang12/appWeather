@@ -1,6 +1,5 @@
-import { Days } from "../Days/Days"
+import { Hours } from "../Hours/Hours"
 import { Weather } from "../Weather/Weather";
-import "../Forecast/Forecast.css"
 import { useContext } from "react";
 import { WeatherContextState } from "../../weatherContext/ContextWeather";
 
@@ -10,7 +9,7 @@ const Forecast = () => {
     return (
         <div className="fondo">
             <Weather />
-            <Days />
+            <Hours />
         </div>
     )
 }
