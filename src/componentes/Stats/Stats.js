@@ -15,8 +15,8 @@ import { WeatherContextState } from '../../weatherContext/ContextWeather';
 
 
 const Stats = () => {
-  const {weather} = useContext(WeatherContextState);
-
+  const {state} = useContext(WeatherContextState);
+	const {weather} = state;
   const {list} = weather;
 
   const weatherData = list.map(day =>({

@@ -8,7 +8,9 @@ import "./WeatherApp.css"
 
 
 const WeatherApp = () => {
-const {search, weather, city, loading} = useContext(WeatherContextState);
+const {state, loading} = useContext(WeatherContextState);
+
+    const {city, search, weather} = state;
     const {dt} = city;
 
 

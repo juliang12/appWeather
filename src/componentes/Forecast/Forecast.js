@@ -4,7 +4,9 @@ import { useContext } from "react";
 import { WeatherContextState } from "../../weatherContext/ContextWeather";
 
 const Forecast = () => {
-    const { weather, city } = useContext(WeatherContextState);
+    const { state} = useContext(WeatherContextState);
+    const {weather, city} = state;
+
     if (!weather || !city) return null;
     return (
         <div className="fondo">

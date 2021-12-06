@@ -3,7 +3,8 @@ import { WeatherContextState } from "../../weatherContext/ContextWeather";
 import "../Weather/Weather.css"
 
 export const Weather = () => {
-    const { city } = useContext(WeatherContextState);
+    const { state} = useContext(WeatherContextState);
+    const {city} = state;
     const {name, main} = city;
 
     return (

@@ -1,11 +1,12 @@
+
 import { useContext } from "react";
 import "../Hours/Hours.css"
 import { WeatherContextState } from "../../weatherContext/ContextWeather";
 
 export const Hours = () => {
 
-    const {weather} = useContext(WeatherContextState);
-
+    const {state} = useContext(WeatherContextState);
+    const {weather} = state;
 
     const filtrado = weather.list.slice(0, 6)
 
@@ -26,6 +27,3 @@ export const Hours = () => {
     )
     
 }
-
-
-
